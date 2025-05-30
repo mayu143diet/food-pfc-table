@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PFC成分表</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
 
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #c26b91;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 10px;
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      border: 1px solid #c26b91;
+      background: #fff0f5;
+      color: #c26b91;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .tab-button.active {
+      background: #c26b91;
+      color: #fff;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #fce4ec;
+      color: #c2185b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>食品別PFC成分表</h1>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="shushoku">主食</button>
+    <button class="tab-button" data-tab="protein">たんぱく源</button>
+    <button class="tab-button" data-tab="snack">おやつ</button>
+  </div>
+
+  <div id="shushoku" class="tab-content active">
+    <table>
+      <thead>
+        <tr>
+          <th>食品名</th>
+          <th>炭水化物(g)</th>
+          <th>たんぱく質(g)</th>
+          <th>脂質(g)</th>
+          <th>カロリー(kcal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>白ごはん（150g）</td><td>55.2</td><td>3.8</td><td>0.5</td><td>252</td></tr>
+        <tr><td>玄米（150g）</td><td>51.3</td><td>3.8</td><td>1.5</td><td>248</td></tr>
+        <tr><td>食パン（6枚切り1枚）</td><td>26.6</td><td>5.5</td><td>2.2</td><td>158</td></tr>
+        <tr><td>パスタ（乾60g）</td><td>42.3</td><td>7.6</td><td>1.2</td><td>213</td></tr>
+        <tr><td>うどん（ゆで200g）</td><td>41.6</td><td>5.2</td><td>0.8</td><td>210</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="protein" class="tab-content">
+    <table>
+      <thead>
+        <tr>
+          <th>食品名</th>
+          <th>炭水化物(g)</th>
+          <th>たんぱく質(g)</th>
+          <th>脂質(g)</th>
+          <th>カロリー(kcal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>鶏むね肉（皮なし100g）</td><td>0.1</td><td>22.3</td><td>1.5</td><td>108</td></tr>
+        <tr><td>豚こま肉（100g）</td><td>0.2</td><td>17.3</td><td>17.6</td><td>230</td></tr>
+        <tr><td>納豆（1パック）</td><td>5.4</td><td>8.3</td><td>5.0</td><td>100</td></tr>
+        <tr><td>ツナ缶（水煮・ノンオイル）</td><td>0.1</td><td>13.5</td><td>0.5</td><td>60</td></tr>
+        <tr><td>サバ缶（水煮）</td><td>0.3</td><td>20.7</td><td>11.4</td><td>190</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="snack" class="tab-content">
+    <table>
+      <thead>
+        <tr>
+          <th>食品名</th>
+          <th>炭水化物(g)</th>
+          <th>たんぱく質(g)</th>
+          <th>脂質(g)</th>
+          <th>カロリー(kcal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>甘栗（30g）</td><td>17.2</td><td>0.8</td><td>0.2</td><td>70</td></tr>
+        <tr><td>干し芋（30g）</td><td>23.3</td><td>0.6</td><td>0.2</td><td>115</td></tr>
+        <tr><td>オイコス（プレーン）</td><td>4.7</td><td>10.1</td><td>0.2</td><td>71</td></tr>
+        <tr><td>アーモンド（10粒）</td><td>2.1</td><td>2.2</td><td>5.0</td><td>69</td></tr>
+        <tr><td>ゆでたまご（1個）</td><td>0.2</td><td>6.6</td><td>5.2</td><td>91</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
